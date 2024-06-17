@@ -1,0 +1,10 @@
+name = "docker-serverless-proxy"
+compatibility_date = "2024-04-05"
+main = "src/index.ts"
+minify = true
+
+[env.prod.vars]
+MODE = "prod"
+
+[env.dev.vars]
+MODE = "dev"
