@@ -23,4 +23,8 @@ jobs:
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: deploy --env prod --routes docker.${{ secrets.DOMAIN }},gcr.${{ secrets.DOMAIN }},ghcr.${{ secrets.DOMAIN }},quay.${{ secrets.DOMAIN }}
+          command: "deploy --env prod \
+            --routes docker.${{ secrets.DOMAIN }} \
+            --routes gcr.${{ secrets.DOMAIN }} \
+            --routes ghcr.${{ secrets.DOMAIN }} \
+            --routes quay.${{ secrets.DOMAIN }}"
