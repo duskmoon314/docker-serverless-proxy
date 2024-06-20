@@ -127,11 +127,23 @@ app.all("/*", async (c) => {
       req_url.pathname = req_path.join("/");
     }
 
+    const headers = new Headers();
+    if (c.req.header("Authorization")) {
+      headers.set("Authorization", c.req.header("Authorization")!);
+    }
+    if (c.req.header("Accept")) {
+      headers.set("Accept", c.req.header("Accept")!);
+    }
+    if (c.req.header("Accept-Encoding")) {
+      headers.set("Accept-Encoding", c.req.header("Accept-Encoding")!);
+    }
+    if (c.req.header("User-Agent")) {
+      headers.set("User-Agent", c.req.header("User-Agent")!);
+    }
+
     const req = new Request(req_url, {
       method: c.req.method,
-      headers: new Headers({
-        Authorization: c.req.header("Authorization") || "",
-      }),
+      headers,
 
       redirect: "follow",
     });
